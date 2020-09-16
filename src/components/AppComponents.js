@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Buttons from './Buttons';
 import Grid from './Grid';
+import {mapStateToProps} from '../react-redux-map/mapStateToProps';
+import {mapDispatchToProps} from '../react-redux-map/mapDispatchToProps';
 
 /**
  * This class represents a React component which acts a container
@@ -11,16 +13,20 @@ import Grid from './Grid';
  * @public
  */
 class AppComponents extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return(
             <div id = 'AppComponents'>
                 <div id = "container">
-                    <Grid /> 
-                    <Buttons /> 
+                    <Grid time_step = {this.props['time_step']} update_board = {this.props["update_board"]} curr_board_status = {this.props["curr_board_status"]} game_state = {this.props["game_state"]} curr_turn = {this.props["curr_turn"]}/> 
+                    <Buttons update_game_status = {this.props["update_game_status"]}/> 
                 </div>
             </div>
         )
     }
 }
+let connectedComponent = connect(mapStateToProps, mapDispatchToProps)(AppComponents); 
 
-export default AppComponents; 
+export {connectedComponent as AppComponents}; 

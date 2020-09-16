@@ -1,17 +1,28 @@
-const INIT_BOARD_STATE = [];
-for (let i=0; i<3; i++) {
-    INIT_BOARD_STATE.push(Array(3).fill(''));
-}
-
-const INIT_TURN = '';
+import updateBoardReducer from './updateBoardReducer';
+import goBackReducer from './goBackReducer';
+import changeGameStatusReducer from './changeGameStatusReducer';
+import {UPDATE_BOARD, GO_BACK, t_0_state, CHANGE_GAME_STATUS} from './reducerConstants'
 
 const INIT_STATE = {
-    current_turn: INIT_TURN,
-    curr_board_status: INIT_BOARD_STATE
+    0: t_0_state
+};
+
+
+function rootReducer(state = INIT_STATE, action) {
+    switch (action.type) {
+        case UPDATE_BOARD:
+            return updateBoardReducer(state, action);
+
+        case GO_BACK:
+            return goBackReducer(state, action);
+        
+        case CHANGE_GAME_STATUS:
+            return changeGameStatusReducer(state, action); 
+
+        default:
+            return state;
+    }
 }
 
-const INIT_STATE_THROUGH_TIME = INIT_STATE;
 
-function rootReducer(state = INIT_STATE_THROUGH_TIME, action) {
-    
-}
+export {rootReducer};

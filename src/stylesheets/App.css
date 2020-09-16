@@ -119,6 +119,10 @@ body, html, #root {
   margin-right: 40px;
 }
 
+#reset {
+  margin-right: 40px;
+}
+
 .buttons:hover {
   background-color: #086fd6;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { faAlignLeft } from '@fortawesome/free-solid-svg-icons';
+import {STARTED, PAUSED} from '../reducers/reducerConstants';
 
 /**
  * This class represents a React component and renders and controls all the buttons for the game.
@@ -10,6 +11,9 @@ import { faAlignLeft } from '@fortawesome/free-solid-svg-icons';
 class Buttons extends React.Component {
     constructor(props) {
         super(props);
+
+        this.chooseStyle = this.chooseStyle.bind(this);
+        this.startGame = this.startGame.bind(this);
     }
 
     componentDidMount() {
@@ -36,14 +40,33 @@ class Buttons extends React.Component {
     }
 
     startGame(e) {
-        console.log(e.target);
-        e.target.style.display = "none";
-        document.getElementById("O").style.display = "block";
-        document.getElementById("X").style.display = "block";
+        const O_button = document.getElementById("O");
+        const X_button = document.getElementById("X");
+        this._setDisplayNone(e.target);
+        this._setDisplayBlock(O_button, X_button);
     }
 
     chooseStyle(e) {
-        
+        const chosenStyle = e.target.id;
+        const O_button = document.getElementById("O");
+        const X_button = document.getElementById("X");
+        const reset_button = document.getElementById("reset");
+        const history_button = document.getElementById("history");
+
+        this._setDisplayNone(O_button, X_button);
+        this._setDisplayBlock(reset_button, history_button);
+
+        // Game status has changed to start if we have clicked the start button and chosen a style
+        // so dispatch action to store to update the state
+        this.props.update_game_status(0, STARTED, chosenStyle);
+    }
+
+    _setDisplayNone(...args) {
+        args.forEach((x) => x.style.display = "none");
+    }
+
+    _setDisplayBlock(...args) {
+        args.forEach((x) => x.style.display = "block");
     }
 
     render() {
