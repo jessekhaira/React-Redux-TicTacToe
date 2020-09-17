@@ -19,6 +19,10 @@ body, html, #root {
   height: 100%;
 }
 
+#confirm_reset {
+  display: none;
+}
+
 #container {
   display: flex;
   flex-direction: column;
@@ -56,10 +60,16 @@ body, html, #root {
 }
 
 .grid_cells {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-right: 1px solid #EDF5E1;
   border-top: 1px solid #EDF5E1;
   background-color: rgba(11, 78, 145, 0.8);
   cursor: pointer;
+  text-align: center;
+  font-size: 30px;
+  color: #5CDB95;
 }
 
 #_00 {
@@ -109,7 +119,7 @@ body, html, #root {
   text-align: center;
   background-color: #05386B;
   color: #EDF5E1;
-  padding: 15px;
+  padding: 10px;
   border-radius: 10px;
   transition: ease-in-out;
   transition-duration: 0.2s;
@@ -123,8 +133,38 @@ body, html, #root {
   margin-right: 40px;
 }
 
+#history {
+  margin-right: 40px;
+}
+
 .buttons:hover {
   background-color: #086fd6;
+}
+
+.finished_board {
+  text-align: center;
+  font-size: 22px;
+  position: relative;
+  top: 10px;
+}
+
+#confirm_reset {
+  display: none;
+}
+
+#reset_head {
+  display: none;
+}
+
+#reset_buttons {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  bottom: 20px;
+}
+
+#confirm_newgame {
+  display: none;
 }
 
 h1 {

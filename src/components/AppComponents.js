@@ -13,15 +13,12 @@ import {mapDispatchToProps} from '../react-redux-map/mapDispatchToProps';
  * @public
  */
 class AppComponents extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return(
             <div id = 'AppComponents'>
                 <div id = "container">
-                    <Grid time_step = {this.props['time_step']} update_board = {this.props["update_board"]} curr_board_status = {this.props["curr_board_status"]} game_state = {this.props["game_state"]} curr_turn = {this.props["curr_turn"]}/> 
-                    <Buttons update_game_status = {this.props["update_game_status"]}/> 
+                    <Grid update_game_status = {this.props["update_game_status"]}time_step = {this.props['time_step']} update_board = {this.props["update_board"]} curr_board_status = {this.props["curr_board_status"]} game_state = {this.props["game_state"]} curr_turn = {this.props["curr_turn"]}/> 
+                    <Buttons startNewGame = {this.props.startNewGame} time_step = {this.props['time_step']} update_game_status = {this.props["update_game_status"]} resetGame = {this.props["resetGame"]} game_state = {this.props["game_state"]} curr_turn = {this.props["curr_turn"]} /> 
                 </div>
             </div>
         )

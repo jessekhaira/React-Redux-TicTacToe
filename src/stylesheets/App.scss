@@ -6,6 +6,8 @@
     box-sizing: border-box;
     font-family: "Dosis";
 }
+
+
 // default to make sure everything is sized properly at the beginning 
 body, html, #root {
     height: 100%;
@@ -20,6 +22,10 @@ body, html, #root {
     align-items: center;
     flex-direction: column;
     height:100%;
+}
+
+#confirm_reset {
+    display: none;
 }
 
 #container {
@@ -66,10 +72,16 @@ body, html, #root {
 
 
 .grid_cells {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-right: 1px solid #EDF5E1;
     border-top: 1px solid #EDF5E1;
     background-color: rgba(11, 78, 145, 0.8);
     cursor: pointer;
+    text-align: center;
+    font-size: 30px;
+    color: #5CDB95;
 }
 
 @for $i from 0 through 2 {
@@ -92,7 +104,7 @@ body, html, #root {
     text-align: center;
     background-color: #05386B;
     color: #EDF5E1;
-    padding: 15px;
+    padding: 10px;
     border-radius: 10px;
     transition: ease-in-out;
     transition-duration: 0.2s;
@@ -105,10 +117,39 @@ body, html, #root {
 #reset {
     margin-right: 40px;
 }
+
+#history {
+    margin-right: 40px;
+}
 .buttons:hover {
     background-color:rgb(8, 111, 214) ;
 }
 
+.finished_board {
+    text-align: center;
+    font-size: 22px;
+    position: relative;
+    top: 10px;
+}
+
+#confirm_reset {
+    display: none;
+    
+}
+#reset_head {
+    display: none;
+}
+
+#reset_buttons {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    bottom: 20px;
+}
+
+#confirm_newgame {
+    display: none;
+}
 
 h1 {
     color: #EDF5E1;
