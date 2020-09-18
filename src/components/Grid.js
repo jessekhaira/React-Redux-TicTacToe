@@ -70,6 +70,18 @@ class Grid extends React.Component {
         const val = this.props.curr_turn; 
         const update_info = [row, col, val];
         this.props.update_board(update_info, timestep);
+
+        // add new button for this state in the history tab
+        this._addNewStateDiv(update_info, timestep);
+
+    }
+
+    _addNewStateDiv(update_info, timestep) {
+        const new_state_div = document.createElement('div');
+        new_state_div.innerHTML = `Go to move # ${timestep+1}`;
+        new_state_div.className = `buttons`;
+        const parent = document.getElementById("states_holder")
+        parent.appendChild(new_state_div);
     }
 
     componentDidUpdate(prevProps) {

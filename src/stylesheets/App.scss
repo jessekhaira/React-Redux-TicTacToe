@@ -115,11 +115,11 @@ body, html, #root {
 }
 
 #reset {
-    margin-right: 40px;
+    margin-right: 20px;
 }
 
 #history {
-    margin-right: 40px;
+    margin-right: 20px;
 }
 .buttons:hover {
     background-color:rgb(8, 111, 214) ;
@@ -145,10 +145,27 @@ body, html, #root {
     flex-direction: column;
     position: relative;
     bottom: 20px;
+
+    .buttons {
+        margin-top: 5px;
+    }
 }
 
 #confirm_newgame {
     display: none;
+}
+
+#go_back {
+    display: none; 
+}
+
+#states_holder {
+    display: none;
+    gap: 5px 10px; 
+    .buttons {
+        margin-top: 5px;
+    }
+    margin-bottom: 25px;
 }
 
 h1 {
@@ -156,4 +173,8 @@ h1 {
     font-size: 55px;
     margin-bottom: 0px;
     text-shadow: 1px 2px 1px black;
+}
+
+#newgame_buttons {
+    @extend #reset_buttons; 
 }

@@ -130,11 +130,11 @@ body, html, #root {
 }
 
 #reset {
-  margin-right: 40px;
+  margin-right: 20px;
 }
 
 #history {
-  margin-right: 40px;
+  margin-right: 20px;
 }
 
 .buttons:hover {
@@ -156,15 +156,31 @@ body, html, #root {
   display: none;
 }
 
-#reset_buttons {
+#reset_buttons, #newgame_buttons {
   display: flex;
   flex-direction: column;
   position: relative;
   bottom: 20px;
 }
+#reset_buttons .buttons, #newgame_buttons .buttons {
+  margin-top: 5px;
+}
 
 #confirm_newgame {
   display: none;
+}
+
+#go_back {
+  display: none;
+}
+
+#states_holder {
+  display: none;
+  gap: 5px 10px;
+  margin-bottom: 25px;
+}
+#states_holder .buttons {
+  margin-top: 5px;
 }
 
 h1 {

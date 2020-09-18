@@ -17,11 +17,11 @@ class Buttons extends React.Component {
         this._resetNo = this._resetNo.bind(this);
         this._startNewGame = this._startNewGame.bind(this);
         this._resetGame = this._resetGame.bind(this);
-
         this._newGameYes = this._newGameYes.bind(this);
         this._newGameNo = this._newGameNo.bind(this);
-
         this._updateGameState = this._updateGameState.bind(this);
+        this._showGameHistory = this._showGameHistory.bind(this);
+        this._goBack = this._goBack.bind(this);
     }
 
     componentDidMount() {
@@ -127,6 +127,8 @@ class Buttons extends React.Component {
         this._showGameButtons();
         const confirm_reset = document.getElementById("confirm_reset");
         this._setDisplayNone(confirm_reset);
+        // clear all previous states in stateholder
+        this._clearGameHistory();
     }
 
     _resetNo() {
@@ -166,6 +168,29 @@ class Buttons extends React.Component {
         this._setDisplayNone(confirm_newgame);
     }
 
+    _showGameHistory() {
+        this.props.update_game_status(this.props.time_step, this._updateGameState(PAUSED), this.props.curr_turn);
+        this._hideGameButtons();
+        this._setDisplayBlock(document.getElementById("go_back"));
+        const parent = document.getElementById("states_holder");
+        parent.style.display = 'grid';
+        parent.style.gridTemplateColumns = 'repeat(3, minmax(50px, 1fr))';
+        parent.style.gridColumnGap = '20px;'
+    }
+
+    _clearGameHistory() {
+        const parent = document.getElementById("states_holder");
+        while (parent.firstChild) {
+            parent.removeChild(parent.lastChild);
+        }
+    }
+
+    _goBack(e) {
+        this._showGameButtons();
+        this.props.update_game_status(this.props.time_step, this._updateGameState(STARTED), this.props.curr_turn);
+        this._setDisplayNone(e.target, document.getElementById("states_holder"));
+    }
+
     render() {
         return(
             <div id = "button_loc">
@@ -174,7 +199,7 @@ class Buttons extends React.Component {
                     <div id = "O" className = "buttons" onClick={this.chooseStyle}>Choose O</div>
                     <div id = "X" className = "buttons" onClick = {this.chooseStyle}>Choose X</div>
                     <div id = "reset" className = "buttons" onClick = {this._resetGame}>Reset Game</div>
-                    <div id = "history" className = "buttons">Show Game History</div>
+                    <div id = "history" className = "buttons" onClick = {this._showGameHistory}>Show Game History</div>
                     <div id = "new_game" className = "buttons" onClick = {this._startNewGame}>Start New Game</div> 
                 </div>
                 <div id = "confirm_reset">
@@ -192,7 +217,14 @@ class Buttons extends React.Component {
                         <div id = "newgame_no" className = "buttons" onClick = {this._newGameNo}>No</div>            
                     </div>
                 </div>
+
+                <div id = "state_through_time">
+                    <div id = "go_back" className = "buttons" onClick = {this._goBack}>Go Back</div>
+                    <div id = "states_holder">
+                    </div>
+                </div>
             </div>
+
         )
     }
 }
