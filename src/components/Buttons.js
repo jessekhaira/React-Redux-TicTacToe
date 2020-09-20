@@ -22,14 +22,21 @@ class Buttons extends React.Component {
         this._updateGameState = this._updateGameState.bind(this);
         this._showGameHistory = this._showGameHistory.bind(this);
         this._goBack = this._goBack.bind(this);
+
+        this._resetToStateT = this._resetToStateT.bind(this);
     }
 
     componentDidMount() {
         // component mounted for first time, we want only the start button to be available
         // no other button 
         this._initDisplay();
+        this._initStatesHolder();
     }
 
+    _initStatesHolder() {
+        const stateHolder = document.getElementById("states_holder");
+        console.log(stateHolder);
+    }
 
     /**
      * This function is a private method used to initialize the display, hiding all the 
@@ -44,14 +51,14 @@ class Buttons extends React.Component {
         buttons.forEach((x) => {
             let val = (x.id === "start" ? "block":"none");
             x.style.display = val; 
-        })
+        });
     }
 
     startGame(e) {
         const O_button = document.getElementById("O");
         const X_button = document.getElementById("X");
-        this._setDisplayNone(e.target);
-        this._setDisplayBlock(O_button, X_button);
+        this.props._setDisplayNone(e.target);
+        this.props._setDisplayBlock(O_button, X_button);
     }
 
     chooseStyle(e) {
@@ -62,41 +69,33 @@ class Buttons extends React.Component {
         const history_button = document.getElementById("history");
         const new_game = document.getElementById("new_game");
 
-        this._setDisplayNone(O_button, X_button);
-        this._setDisplayBlock(reset_button, history_button, new_game);
+        this.props._setDisplayNone(O_button, X_button);
+        this.props._setDisplayBlock(reset_button, history_button, new_game);
 
         // Game status has changed to start if we have clicked the start button and chosen a style
         // so dispatch action to store to update the state
         this.props.update_game_status(this.props.time_step, STARTED, chosenStyle);
     }
 
-    _setDisplayNone(...args) {
-        args.forEach((x) => x.style.display = "none");
-    }
-
-    _setDisplayBlock(...args) {
-        args.forEach((x) => x.style.display = "block");
-    }
-
     _hideGameButtons() {
         const reset_button = document.getElementById("reset");
         const history_button = document.getElementById("history");
         const new_game = document.getElementById("new_game");
-        this._setDisplayNone(reset_button, history_button, new_game);
+        this.props._setDisplayNone(reset_button, history_button, new_game);
     }
 
     _showGameButtons() {
         const reset_button = document.getElementById("reset");
         const history_button = document.getElementById("history");
         const new_game = document.getElementById("new_game");
-        this._setDisplayBlock(reset_button, history_button, new_game);
+        this.props._setDisplayBlock(reset_button, history_button, new_game);
     }
 
 
     _turnOffWinnerStalemate() {
         const winner = document.getElementById('winner_div');
         const stalemate = document.getElementById('stalemate_div');
-        this._setDisplayNone(winner, stalemate);
+        this.props._setDisplayNone(winner, stalemate);
     }
 
     _updateGameState (newState) {
@@ -126,7 +125,7 @@ class Buttons extends React.Component {
         this._turnOffWinnerStalemate(); 
         this._showGameButtons();
         const confirm_reset = document.getElementById("confirm_reset");
-        this._setDisplayNone(confirm_reset);
+        this.props._setDisplayNone(confirm_reset);
         // clear all previous states in stateholder
         this._clearGameHistory();
     }
@@ -137,7 +136,7 @@ class Buttons extends React.Component {
         this.props.update_game_status(this.props.time_step, this._updateGameState(STARTED), this.props.curr_turn);
         this._showGameButtons();
         const confirm_reset = document.getElementById("confirm_reset");
-        this._setDisplayNone(confirm_reset);
+        this.props._setDisplayNone(confirm_reset);
     }
 
     _startNewGame() {
@@ -155,8 +154,8 @@ class Buttons extends React.Component {
         this._turnOffWinnerStalemate();
         const confirm_newgame = document.getElementById("confirm_newgame");
         const startbutton = document.getElementById("start");
-        this._setDisplayNone(confirm_newgame);
-        this._setDisplayBlock(startbutton);
+        this.props._setDisplayNone(confirm_newgame);
+        this.props._setDisplayBlock(startbutton);
     }
 
     _newGameNo() {
@@ -165,17 +164,16 @@ class Buttons extends React.Component {
         this.props.update_game_status(this.props.time_step, this._updateGameState(STARTED), this.props.curr_turn);
         this._showGameButtons();
         const confirm_newgame = document.getElementById("confirm_newgame");
-        this._setDisplayNone(confirm_newgame);
+        this.props._setDisplayNone(confirm_newgame);
     }
 
     _showGameHistory() {
         this.props.update_game_status(this.props.time_step, this._updateGameState(PAUSED), this.props.curr_turn);
         this._hideGameButtons();
-        this._setDisplayBlock(document.getElementById("go_back"));
+        this.props._setDisplayBlock(document.getElementById("go_back"));
         const parent = document.getElementById("states_holder");
         parent.style.display = 'grid';
         parent.style.gridTemplateColumns = 'repeat(3, minmax(50px, 1fr))';
-        parent.style.gridColumnGap = '20px;'
     }
 
     _clearGameHistory() {
@@ -188,7 +186,31 @@ class Buttons extends React.Component {
     _goBack(e) {
         this._showGameButtons();
         this.props.update_game_status(this.props.time_step, this._updateGameState(STARTED), this.props.curr_turn);
-        this._setDisplayNone(e.target, document.getElementById("states_holder"));
+        this.props._setDisplayNone(e.target, document.getElementById("states_holder"));
+    }
+
+    _resetToStateT(e) {
+        const timestep = e.target.getAttribute('timestep');
+        this.props.go_back_state(timestep);
+        this.props._setDisplayNone(document.getElementById("option_buttons"));
+        this._showGameButtons(); 
+        // regardless of if game was won or in stalemate, if we're resetting to an earlier timestep
+        // then those messages should go away
+        document.getElementById("winner_div").innerHTML = '';
+        document.getElementById("stalemate_div").innerHTML = ''; 
+        // clear all the divs in the state holder that occur after the current timestep
+        const state_holder = document.getElementById("states_holder");
+        let i =0;
+        while (i<state_holder.children.length) {
+            const child = state_holder.children[i];
+            if (child.getAttribute('timestep') >= e.target.getAttribute('timestep')) {
+                state_holder.removeChild(child);
+                continue; 
+            }
+            else {
+                i++;
+            }
+        }
     }
 
     render() {
@@ -221,6 +243,10 @@ class Buttons extends React.Component {
                 <div id = "state_through_time">
                     <div id = "go_back" className = "buttons" onClick = {this._goBack}>Go Back</div>
                     <div id = "states_holder">
+                    </div>
+                    <div id = "option_buttons">
+                            <div id = "go_back_yes" className = "buttons" onClick = {this._resetToStateT}>Start playing from this time onward?</div>
+                            <div id = "go_back_no" className = "buttons" onClick = {null}>Back to list of timestates</div>
                     </div>
                 </div>
             </div>

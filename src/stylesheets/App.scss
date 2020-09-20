@@ -178,3 +178,7 @@ h1 {
 #newgame_buttons {
     @extend #reset_buttons; 
 }
+
+#option_buttons {
+    display: none;
+}

@@ -13,12 +13,34 @@ import {mapDispatchToProps} from '../react-redux-map/mapDispatchToProps';
  * @public
  */
 class AppComponents extends React.Component {
+
+    _setDisplayNone(...args) {
+        args.forEach((x) => x.style.display = "none");
+    }
+
+    _setDisplayBlock(...args) {
+        args.forEach((x) => x.style.display = "block");
+    }
+    
     render() {
         return(
             <div id = 'AppComponents'>
                 <div id = "container">
-                    <Grid update_game_status = {this.props["update_game_status"]}time_step = {this.props['time_step']} update_board = {this.props["update_board"]} curr_board_status = {this.props["curr_board_status"]} game_state = {this.props["game_state"]} curr_turn = {this.props["curr_turn"]}/> 
-                    <Buttons startNewGame = {this.props.startNewGame} time_step = {this.props['time_step']} update_game_status = {this.props["update_game_status"]} resetGame = {this.props["resetGame"]} game_state = {this.props["game_state"]} curr_turn = {this.props["curr_turn"]} /> 
+                    <Grid all_board_statuses = {this.props["all_board_statuses"]} update_game_status = {this.props["update_game_status"]} 
+                        time_step = {this.props['time_step']} update_board = {this.props["update_board"]} 
+                        curr_board_status = {this.props["curr_board_status"]} game_state = {this.props["game_state"]} 
+                        _setDisplayNone = {this._setDisplayNone}
+                        _setDisplayBlock = {this._setDisplayBlock} 
+                        curr_turn = {this.props["curr_turn"]
+                        }/> 
+
+                    <Buttons startNewGame = {this.props.startNewGame} time_step = {this.props['time_step']} 
+                        update_game_status = {this.props["update_game_status"]}
+                        go_back_state = {this.props.go_back_state}
+                        resetGame = {this.props["resetGame"]} game_state = {this.props["game_state"]}
+                        _setDisplayNone = {this._setDisplayNone}
+                        _setDisplayBlock = {this._setDisplayBlock} 
+                        curr_turn = {this.props["curr_turn"]} /> 
                 </div>
             </div>
         )
