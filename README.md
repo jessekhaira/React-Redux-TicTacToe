@@ -12,4 +12,4 @@ Repository is still in progress and features are being added.
 
 ## Screenshots 
 Main UI 
-<img src="./screenshots/screen1.png">
+<img src="./screenshots/screen1.png" width="200">
