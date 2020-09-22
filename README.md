@@ -14,3 +14,8 @@ Repository is still in progress and features are being added.
 Main UI 
 <br> 
 <img src="./screenshots/screen1.png" width="400">
+
+Selection of which letter to play with
+<br>
+<img src="./screenshots/screen2.png" width = "400">
+
