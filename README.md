@@ -18,4 +18,28 @@ Main UI
 Selection of which letter to play with
 <br>
 <img src="./screenshots/screen2.png" width = "400">
+<br>
+
+Highlighting of winning three grid cells and winner message
+<br>
+<img src = "./screenshots/screen3.png" width = "400">
+<br>
+
+Stalemate message
+<br>
+<img src = "./screenshots/screen4.png" width = "400">
+<br>
+
+Being able to select and go back and play from any previous state 
+<br>
+<img src = "./screenshots/screen5.png" width = "400">
+<br>
+
+<br>
+<img src = "./screenshots/screen6.png" width = "400">
+<br>
+
+<br>
+<img src = "./screenshots/screen7.png" width = "400">
+<br>
 
