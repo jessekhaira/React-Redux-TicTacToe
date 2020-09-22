@@ -15,12 +15,13 @@ class Grid extends React.Component {
         return (
             <div>
                 <GridHeader /> 
-                <GridCells all_board_statuses = {this.props["all_board_statuses"]} update_game_status = {this.props["update_game_status"]} 
-                        time_step = {this.props['time_step']} update_board = {this.props["update_board"]} 
-                        curr_board_status = {this.props["curr_board_status"]} game_state = {this.props["game_state"]} 
-                        _setDisplayNone = {this.props._setDisplayNone}
-                        _setDisplayBlock = {this.props._setDisplayBlock} 
-                        curr_turn = {this.props["curr_turn"]} /> 
+                <GridCells all_board_statuses = {this.props["all_board_statuses"]} 
+                    update_game_status = {this.props["update_game_status"]} 
+                    time_step = {this.props['time_step']} 
+                    update_board = {this.props["update_board"]} 
+                    curr_board_status = {this.props["curr_board_status"]} 
+                    game_state = {this.props["game_state"]} 
+                    curr_turn = {this.props["curr_turn"]} /> 
             </div>
         )
     }
