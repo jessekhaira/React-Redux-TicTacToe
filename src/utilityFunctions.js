@@ -117,6 +117,18 @@ function deleteChildrenGreater_EqualThanT(div, t) {
     }
 }
 
+function initializeGrid(grid) {
+    let curr_gc = 0;
+    for (let i=0; i<3;i++) {
+        for (let j=0; j<3; j++) {
+            grid[curr_gc].id = "_"+String(i) + String(j);
+            curr_gc++;
+        }
+    }
+}
 
-export {_setDisplayBlock, _highlightWinningCells ,_setDisplayNone, _insertO_X_intoGrid, _restoreDefaultColors, _setDisplayGrid,checkIfWinner, checkIfStalemate,
+
+
+
+export {_setDisplayBlock, initializeGrid, _highlightWinningCells ,_setDisplayNone, _insertO_X_intoGrid, _restoreDefaultColors, _setDisplayGrid,checkIfWinner, checkIfStalemate,
     deleteChildrenGreater_EqualThanT};

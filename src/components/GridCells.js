@@ -1,6 +1,6 @@
 import React from 'react';
 import {PAUSED, GAME_WON, STALEMATE, STARTED} from '../reducers/reducerConstants';
-import {_setDisplayBlock, _highlightWinningCells,_setDisplayNone, _insertO_X_intoGrid, _restoreDefaultColors, checkIfWinner, checkIfStalemate} from '../utilityFunctions'
+import {_setDisplayBlock, initializeGrid,_highlightWinningCells,_setDisplayNone, _insertO_X_intoGrid, _restoreDefaultColors, checkIfWinner, checkIfStalemate} from '../utilityFunctions'
 import Grid from './Grid';
 
 /** This class represents a React component and renders and controls the grid 
@@ -16,7 +16,7 @@ class GridCells extends React.Component {
         this._addNewStateDiv = this._addNewStateDiv.bind(this); 
     }
     componentDidMount(){
-        this._initIdsGridCells();
+        initializeGrid(document.getElementsByClassName("grid_cells"));
         this._initHandlersGridCells();
     }
 
@@ -41,17 +41,6 @@ class GridCells extends React.Component {
             this.displayStalemate(); 
         }
 
-    }
-
-    _initIdsGridCells() {
-        const grid_cells = document.getElementsByClassName("grid_cells");
-        let curr_gc = 0;
-        for (let i=0; i<3;i++) {
-            for (let j=0; j<3; j++) {
-                grid_cells[curr_gc].id = "_"+String(i) + String(j);
-                curr_gc++;
-            }
-        }
     }
 
     _initHandlersGridCells() {
