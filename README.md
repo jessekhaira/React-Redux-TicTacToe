@@ -1,7 +1,7 @@
 # TicTacToe
 This is an application implementing the game TicTacToe I built from the ground up using React and Redux. 
 
-I deployed this app on github pages! Give it a try
+The app can be played on github pages here: 
 
 ## Features
 * Two player game of tictactoe which ends when any player gets 3 in a row of whatever shape they are using, or the game has reached a stalemate.
