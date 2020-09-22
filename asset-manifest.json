@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/13jk59/React-Redux-TicTacToe/static/css/main.8b2158ae.chunk.css",
-    "main.js": "/13jk59/React-Redux-TicTacToe/static/js/main.b01c9d6a.chunk.js",
-    "main.js.map": "/13jk59/React-Redux-TicTacToe/static/js/main.b01c9d6a.chunk.js.map",
-    "runtime-main.js": "/13jk59/React-Redux-TicTacToe/static/js/runtime-main.55d59ba1.js",
-    "runtime-main.js.map": "/13jk59/React-Redux-TicTacToe/static/js/runtime-main.55d59ba1.js.map",
-    "static/js/2.1ee568fb.chunk.js": "/13jk59/React-Redux-TicTacToe/static/js/2.1ee568fb.chunk.js",
-    "static/js/2.1ee568fb.chunk.js.map": "/13jk59/React-Redux-TicTacToe/static/js/2.1ee568fb.chunk.js.map",
-    "index.html": "/13jk59/React-Redux-TicTacToe/index.html",
-    "precache-manifest.45c462210b4e47f3ed465a925a76ffc4.js": "/13jk59/React-Redux-TicTacToe/precache-manifest.45c462210b4e47f3ed465a925a76ffc4.js",
-    "service-worker.js": "/13jk59/React-Redux-TicTacToe/service-worker.js",
-    "static/css/main.8b2158ae.chunk.css.map": "/13jk59/React-Redux-TicTacToe/static/css/main.8b2158ae.chunk.css.map",
-    "static/js/2.1ee568fb.chunk.js.LICENSE.txt": "/13jk59/React-Redux-TicTacToe/static/js/2.1ee568fb.chunk.js.LICENSE.txt"
+    "main.css": "/React-Redux-TicTacToe/static/css/main.8b2158ae.chunk.css",
+    "main.js": "/React-Redux-TicTacToe/static/js/main.ce4047c0.chunk.js",
+    "main.js.map": "/React-Redux-TicTacToe/static/js/main.ce4047c0.chunk.js.map",
+    "runtime-main.js": "/React-Redux-TicTacToe/static/js/runtime-main.4bc50356.js",
+    "runtime-main.js.map": "/React-Redux-TicTacToe/static/js/runtime-main.4bc50356.js.map",
+    "static/js/2.1ee568fb.chunk.js": "/React-Redux-TicTacToe/static/js/2.1ee568fb.chunk.js",
+    "static/js/2.1ee568fb.chunk.js.map": "/React-Redux-TicTacToe/static/js/2.1ee568fb.chunk.js.map",
+    "index.html": "/React-Redux-TicTacToe/index.html",
+    "precache-manifest.b425bf9002e256b9200aa3743b98c8d3.js": "/React-Redux-TicTacToe/precache-manifest.b425bf9002e256b9200aa3743b98c8d3.js",
+    "service-worker.js": "/React-Redux-TicTacToe/service-worker.js",
+    "static/css/main.8b2158ae.chunk.css.map": "/React-Redux-TicTacToe/static/css/main.8b2158ae.chunk.css.map",
+    "static/js/2.1ee568fb.chunk.js.LICENSE.txt": "/React-Redux-TicTacToe/static/js/2.1ee568fb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.55d59ba1.js",
+    "static/js/runtime-main.4bc50356.js",
     "static/js/2.1ee568fb.chunk.js",
     "static/css/main.8b2158ae.chunk.css",
-    "static/js/main.b01c9d6a.chunk.js"
+    "static/js/main.ce4047c0.chunk.js"
   ]
 }
