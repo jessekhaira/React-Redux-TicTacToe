@@ -11,3 +11,5 @@ Repository is still in progress and features are being added.
 * App supports the ability to time travel through any of the previous game states, and continue playing on from there
 
 ## Screenshots 
+Main UI 
+<img src="./screenshots/screen1.jpg">
