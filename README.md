@@ -13,4 +13,4 @@ Repository is still in progress and features are being added.
 ## Screenshots 
 Main UI 
 <br> 
-<img src="./screenshots/screen1.png" width="200">
+<img src="./screenshots/screen1.png" width="400">
